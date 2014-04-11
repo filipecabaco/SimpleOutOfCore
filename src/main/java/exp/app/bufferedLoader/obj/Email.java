@@ -16,7 +16,7 @@ public class Email extends BasicDBObject {
 	public synchronized void  incrementAssociation(String email){
 		/*Point cannot be used as an valid character in a MongoDB Field  
 		 *so it's replaced with Unicode equivalent*/
-		email = email.replaceAll("\\.", "\\uff0");
+		email = email.replaceAll("\\.", "\\\\uff0");
 		
 		int value = this.get(email) == null ? 1 : ((Integer)this.get(email))+1;
 		this.put(email,value);
