@@ -8,12 +8,10 @@ import java.util.Map;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 
 import exp.app.data.exceptions.EmptyValuesConstructorException;
-import exp.app.data.exceptions.NoSuchCollectionException;
 import exp.app.data.exceptions.NullValuesConstructorException;
 import exp.app.data.exceptions.UnequalValuesConstructorException;
 /**
@@ -112,13 +110,4 @@ public class MongoConnector {
 		return db.getCollection(collectionName) != null;
 	}
 	
-	public void saveDocument(DBObject content , String collectionName) throws NoSuchCollectionException{
-		if(!collections.containsKey(collectionName)){
-			throw new NoSuchCollectionException();
-		}
-		MongoCollection collection = collections.get(collectionName);
-		collection.saveDocument(content);
-	}
-	
-
 }

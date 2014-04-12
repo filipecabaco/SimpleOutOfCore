@@ -19,7 +19,7 @@ public class RandomFileCreator {
 	/*Maximum number of destinations on an email ( set by Gmail External Standart's)*/
 	private static final int MAX_DESTINATIONS = 10;
 	/*Maximum file size (in Byte)*/
-	private static final long FILE_SIZE = 20971520;
+	private static final long FILE_SIZE = 209715200;
 	/*File name*/
 	private static final String FILE_NAME = "test.json";
 	/*Fields Names*/
