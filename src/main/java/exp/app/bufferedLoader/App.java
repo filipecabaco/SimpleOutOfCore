@@ -30,7 +30,8 @@ public class App
 	{
 		try {
 			/*Create file with random values*/
-			File rndFile = RandomFileCreator.createRandomFile();
+			long size = Long.parseLong(args[0]);
+			File rndFile = RandomFileCreator.createRandomFile(size);
 			RandomFileReader randomFileReader = new RandomFileReader(rndFile);
 			
 			/*Create a new instance of Parser were regex are compiled*/

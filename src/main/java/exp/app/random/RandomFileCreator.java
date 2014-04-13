@@ -31,7 +31,7 @@ public class RandomFileCreator {
 	 * @return File created for testing
 	 * @throws IOException
 	 */
-	public static File createRandomFile() throws IOException{
+	public static File createRandomFile(long size) throws IOException{
 		/*Initialize File*/
 		File file = new File(FILE_NAME);
 		file.createNewFile();
@@ -39,20 +39,20 @@ public class RandomFileCreator {
 		BufferedWriter bf = new BufferedWriter(new FileWriter(file));
 		
 		/*Run random creator*/
-		long size = 0;
+		long currentSize = 0;
 		int nEntries = 0;
 		/*We use the size prediction so we can add a last 
 		 * entry and correctly end the entry array*/
 		double sizePrediction = 0;
 		
 		bf.write("[");
-		while(size+sizePrediction < FILE_SIZE){
+		while(currentSize+sizePrediction < size){
 			String randomString = createEntry()+",";
 			nEntries++;
-			size += randomString.length();
+			currentSize += randomString.length();
 			bf.write(randomString);
 			/*Save new size median*/
-			sizePrediction = size / nEntries;
+			sizePrediction = currentSize / nEntries;
 		}
 		/*One last entry to fill the array*/
 		bf.write(createEntry());
